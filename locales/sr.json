@@ -4,5 +4,9 @@
   "placeholder": "Tekst pozdrava",
   "add": "Dodaj",
   "saved": "Sačuvano",
-  "empty": "Još ništa"
+  "empty": "Još ništa",
+  "widget_title": "Pozdrav iz aplikacije",
+  "widget_property": "Oglas",
+  "widget_greetings": "pozdrava",
+  "widget_dashboard": "Pozdrava u aplikaciji „Pozdrav“"
 }

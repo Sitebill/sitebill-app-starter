@@ -4,5 +4,9 @@
   "placeholder": "Greeting text",
   "add": "Add",
   "saved": "Saved",
-  "empty": "Nothing yet"
+  "empty": "Nothing yet",
+  "widget_title": "Hello from an app",
+  "widget_property": "Listing",
+  "widget_greetings": "greetings",
+  "widget_dashboard": "Greetings in the Hello app"
 }

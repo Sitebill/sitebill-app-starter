@@ -59,5 +59,27 @@ const Home = defineComponent({
   },
 })
 
+// Admin dashboard widget (slot "admin.dashboard" in manifest.json → admin.widgets).
+const DashboardHello = defineComponent({
+  name: 'HelloDashboardWidget',
+  props: { host: { type: Object, required: true }, context: { type: Object, default: () => ({}) } },
+  setup(props) {
+    const { host } = props
+    const count = ref(null)
+    onMounted(async () => {
+      const data = await host.gql(LIST)
+      count.value = data.helloGreetings.length
+    })
+
+    return () => h('div', { class: 'rounded-2xl border border-(--ui-border) bg-(--ui-bg) p-5' }, [
+      h('div', { class: 'text-sm text-muted' }, host.t('widget_dashboard')),
+      h('div', { class: 'text-2xl font-semibold mt-1' }, count.value ?? '…'),
+    ])
+  },
+})
+
 // Key = page path relative to /admin/x/<app-id>/ (must match manifest.json → admin.pages).
 export const pages = { '': Home }
+
+// Keys = component names from manifest.json → admin.widgets.
+export const widgets = { DashboardHello }

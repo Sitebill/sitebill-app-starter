@@ -4,5 +4,9 @@
   "placeholder": "Матни салом",
   "add": "Илова кардан",
   "saved": "Нигоҳ дошта шуд",
-  "empty": "Ҳоло холӣ"
+  "empty": "Ҳоло холӣ",
+  "widget_title": "Салом аз барнома",
+  "widget_property": "Эълон",
+  "widget_greetings": "саломҳо",
+  "widget_dashboard": "Саломҳо дар барномаи «Салом»"
 }
