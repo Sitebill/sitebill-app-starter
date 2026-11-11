@@ -8,7 +8,7 @@
     "en": "Starter app: its own table, GraphQL, REST and an admin page without rebuilding the site."
   },
   "sdk": { "php": "1", "web": "1" },
-  "requires": { "host": ">=1.0" },
+  "requires": { "host": ">=1.1" },
   "provider": "SitebillApps\\Sitebill\\Hello\\HelloServiceProvider",
   "permissions": [],
   "admin": {
