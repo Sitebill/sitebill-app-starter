@@ -1,0 +1,24 @@
+{
+    "name": "sitebill/app-starter",
+    "description": "Starter template of an installable Sitebill app (Laravel PHP + Vue). Sitebill is a real-estate CMS / SaaS platform.",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://sitebillcms.com/",
+    "keywords": ["sitebill", "real-estate", "cms", "plugin", "app", "starter", "template"],
+    "require": {
+        "php": ">=8.4"
+    },
+    "require-dev": {
+        "sitebill/app-sdk": "dev-main"
+    },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/Sitebill/sitebill-app-sdk" }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SitebillApps\\Sitebill\\Hello\\": "api/src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Pozdrav iz aplikacije",
+  "about": "Ova stranica, tabela i GraphQL dolaze iz paketa u volumenu, bez ponovnog sklapanja sajta.",
+  "placeholder": "Tekst pozdrava",
+  "add": "Dodaj",
+  "saved": "Sačuvano",
+  "empty": "Još ništa"
+}

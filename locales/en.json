@@ -1,0 +1,8 @@
+{
+  "title": "Hello from an app",
+  "about": "This page, table and GraphQL come from a package in the volume, without rebuilding the site.",
+  "placeholder": "Greeting text",
+  "add": "Add",
+  "saved": "Saved",
+  "empty": "Nothing yet"
+}

@@ -1,0 +1,18 @@
+"A greeting (starter app sitebill.hello)."
+type HelloGreeting {
+    id: ID!
+    text: String!
+    created_at: DateTime!
+}
+
+extend type Query {
+    helloGreetings: [HelloGreeting!]!
+        @guard @can(ability: "admin", model: "Tenant")
+        @all(model: "SitebillApps\\Sitebill\\Hello\\Models\\Greeting")
+}
+
+extend type Mutation {
+    helloCreateGreeting(text: String! @rules(apply: ["required", "max:200"])): HelloGreeting!
+        @guard @can(ability: "admin", model: "Tenant")
+        @create(model: "SitebillApps\\Sitebill\\Hello\\Models\\Greeting")
+}

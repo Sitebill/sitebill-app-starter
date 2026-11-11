@@ -1,0 +1,19 @@
+{
+  "id": "sitebill.hello",
+  "name": { "ru": "Привет", "en": "Hello" },
+  "version": "0.1.0",
+  "vendor": { "name": "Sitebill", "url": "https://sitebillcms.com/" },
+  "description": {
+    "ru": "Стартовое приложение: своя таблица, GraphQL, REST и страница админки без пересборки сайта.",
+    "en": "Starter app: its own table, GraphQL, REST and an admin page without rebuilding the site."
+  },
+  "sdk": { "php": "1", "web": "1" },
+  "requires": { "host": ">=1.0" },
+  "provider": "SitebillApps\\Sitebill\\Hello\\HelloServiceProvider",
+  "permissions": [],
+  "admin": {
+    "menu": [{ "label": { "ru": "Привет", "en": "Hello" }, "icon": "i-lucide-hand", "path": "" }],
+    "pages": [""]
+  },
+  "web": { "admin": "web/admin.mjs" }
+}
