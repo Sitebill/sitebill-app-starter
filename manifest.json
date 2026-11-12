@@ -9,6 +9,8 @@
     "name": "Sitebill",
     "url": "https://sitebillcms.com/"
   },
+  "license": "MIT",
+  "repository": "https://github.com/Sitebill/sitebill-app-starter",
   "description": {
     "ru": "Стартовое приложение: своя таблица, GraphQL, REST и страница админки без пересборки сайта.",
     "en": "Starter app: its own table, GraphQL, REST and an admin page without rebuilding the site."
