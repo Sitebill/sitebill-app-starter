@@ -3,6 +3,9 @@
 Template of an installable Sitebill app (Laravel PHP 8.4 + Vue 3). Product: https://sitebillcms.com/ · https://www.sitebill.ru/
 SDK and contract: https://github.com/Sitebill/sitebill-app-sdk
 
+**Full step-by-step guide for agents (set up a test platform, build, test, pack, publish): [AGENT_GUIDE.md](AGENT_GUIDE.md)**
+(https://raw.githubusercontent.com/Sitebill/sitebill-app-starter/main/AGENT_GUIDE.md)
+
 To create an app from this template:
 1. `manifest.json`: set `id` (`vendor.name`, lowercase), `name` ({ru,en}), `version` (semver), `provider`
    (`SitebillApps\<Vendor>\<Name>\<Name>ServiceProvider`); keep `sdk: {php: "1", web: "1"}`.

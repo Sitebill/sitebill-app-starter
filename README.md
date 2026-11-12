@@ -10,6 +10,7 @@
 | 🌍 International / English | **https://sitebillcms.com/** |
 | 🇷🇺 Россия и СНГ | **https://www.sitebill.ru/** |
 | 🧰 SDK | https://github.com/Sitebill/sitebill-app-sdk |
+| 🤖 AI agents / ИИ-агентам | [AGENT_GUIDE.md](AGENT_GUIDE.md) — build & test an app end to end |
 | 📚 Docs / Документация | https://github.com/rumantic/etownpro-developers-docs |
 
 ## Quick start (EN)
