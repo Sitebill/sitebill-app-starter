@@ -30,6 +30,7 @@ You need a running Community installation that accepts your unsigned package.
 
 ```bash
 # 1. Install the platform (needs Docker with Compose v2). Prints one JSON object: url, admin login, password.
+#    Does your app have to BE the whole site (own home page, menus, dashboard)? Add --profile blank (see §3a).
 curl -fsSL https://sitebillcms.com/install.sh | sh -s -- --dir ./sitebill-test --port 3100 --json
 
 # 2. Allow your own (unsigned) packages in this test installation.
@@ -44,7 +45,7 @@ sb apps list --json
 
 - The admin password is in `.env` (`COMMUNITY_ADMIN_PASSWORD`), the login is `admin@example.com` unless you passed `--email`.
 - Use a dedicated test installation. Do **not** test against someone else's live site.
-- On Windows use WSL or Git Bash. If `-w` paths get mangled in Git Bash, run `export MSYS_NO_PATHCONV=1`.
+- On Windows use WSL or Git Bash. If `-w` paths get mangled in Git Bash, prefix only that command: `MSYS_NO_PATHCONV=1 docker compose exec …` (do not `export` it for the whole session: native tools such as curl then cannot resolve `/d/...` paths).
 - The platform updates itself from sitebillcms.com; to freeze the version while you work set `COMMUNITY_AUTO_UPDATE=false` in `.env`.
 
 ## 2. Create the app from the template
@@ -117,6 +118,26 @@ Limits: up to 3000 files and 64 MB unpacked. File names: Latin letters, digits, 
   Widgets render in the browser only; their component names are the keys in the `widgets` export.
 - `schedule[].command` must start with your id with `.` → `-` plus a colon (`acme-price-alerts:…`); cron has 5 fields.
 - Keep `requires.host` (`>=1.1`) so the package is not installed on a platform that is too old.
+
+### 3a. Owning the whole site (`shell`)
+
+By default an installation is a real-estate agency site and an app is one more menu item. If your app is the product
+(a content plan, personal finance, a custom CRM), install the platform with `--profile blank` (a clean site without real estate)
+and declare in `manifest.json`:
+
+```jsonc
+{
+  "profiles": ["blank"],
+  "shell": { "mode": "owner", "home": "FinanceHome", "adminDashboard": "FinanceDashboard",
+             "adminMenu": "replace", "accountMenu": "replace",
+             "publicNav": [{ "label": { "en": "Overview" }, "to": "/" }] }
+}
+```
+
+`shell.home` is a component in `widgets` of `web/site.mjs` (the home page, rendered in the browser only: show a landing to guests and
+the app to the owner via `host.user`); `shell.adminDashboard` is a component in `widgets` of `web/admin.mjs`. On a `blank` site the first
+app with `shell.mode = "owner"` becomes the main app on install; on a real-estate site make it so with `apps install <file> --shell`
+(release with `apps shell none`). Note: `host.locale` is a Vue ref — read `host.locale.value`.
 
 ### Hard rules (the installer rejects or the checker warns)
 
@@ -218,7 +239,8 @@ gql '{"query":"mutation { helloCreateGreeting(text: \"hi\") { id text } }"}'    
 ```
 
 If login answers `CSRF token mismatch`, the token has a stray character (do not post-process it with Python on Windows:
-it appends ``) or the port is not in `SANCTUM_STATEFUL_DOMAINS` in `.env` (the installer sets it for `--port`).
+it appends `
+`) or the port is not in `SANCTUM_STATEFUL_DOMAINS` in `.env` (the installer sets it for `--port`).
 
 Then repeat the same calls **without** the cookie jar (plain `curl -d … $BASE/graphql`). Every admin field and mutation must answer with an authorization
 error, not with data. This is the most common mistake in generated apps.
